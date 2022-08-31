@@ -16,7 +16,7 @@ export class TodoServiceService {
   public searchDeleted= new EventEmitter();
   public todoSearch: any;
   public todoDeletedSearch: any;
-  public hef : any;
+  public href : any;
   public todoCount$ = new BehaviorSubject<number> (0);
   public deletedCount$ = new BehaviorSubject<number> (0);
   constructor(private http : HttpClient) { }
@@ -49,22 +49,22 @@ export class TodoServiceService {
 
    // Search By Name
   searchByName(name : string){
-    const params = new HttpParams().set('name', name);
-    (this.http.get(this.API + 'search', {params}) as Observable<any>).subscribe((res)=>{
-      this.todoSearch = res.item as Observable<any>;
-      this.search.emit();
-    });
-    return  (this.http.get(this.API + 'search', {params}) as Observable<any>);
+    const params = new HttpParams().set('name', name.trim());
+    if(this.href == '/home') {
+      (this.http.get(this.API + 'search', {params}) as Observable<any>).subscribe((res)=>{
+        this.todoSearch = res.item as Observable<any>;
+        this.search.emit();
+      });
+      return  (this.http.get(this.API + 'search', {params}) as Observable<any>);
+
+    } else{
+      (this.http.get(this.API + 'searchDeleted', {params}) as Observable<any>).subscribe((res)=>{
+        this.todoDeletedSearch = res.item as Observable<any>;
+        this.searchDeleted.emit();
+      });
+      return  (this.http.get(this.API + 'searchDeleted', {params}) as Observable<any>);
+    }
+    
   }
 
-  // Search Deleted By Name
-  searchDeletedByName(name : string){
-    const params = new HttpParams().set('name', name);
-    (this.http.get(this.API + 'searchDeleted', {params}) as Observable<any>).subscribe((res)=>{
-      this.todoDeletedSearch = res.item as Observable<any>;
-      this.searchDeleted.emit();
-    });
-    return  (this.http.get(this.API + 'searchDeleted', {params}) as Observable<any>);
-  }
-  
 }

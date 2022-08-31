@@ -11,7 +11,6 @@ export class HeaderComponent implements OnInit {
   constructor(private todoService: TodoServiceService) { }
 
   ngOnInit(): void {
-    //this.todoService.searchByName().
   }
   searchByName(name: string)
   {

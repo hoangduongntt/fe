@@ -14,16 +14,20 @@ export class DeletedTodoComponent implements OnInit {
   public subscription!: Subscription;
   public deletedCount: number = 0;
   public href : string = '';
+
   constructor(private todoService: TodoServiceService, private router : Router) { }
+
   ngOnInit(): void {
+    
+    // load Data
     this.getDeletedTodoList(); 
+    // search By Name
     this.todoService.searchDeleted.subscribe(()=>
     {
       this.todos=this.todoService.todoDeletedSearch;
     })
-    
-    
-    this.todoService.hef = this.router.url;
+    // get href
+    this.todoService.href = this.router.url; 
   }
 
 // get Deleted TodoList

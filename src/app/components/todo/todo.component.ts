@@ -4,7 +4,7 @@ import { Todo } from 'src/app/models/Todo.class';
 import { TodoServiceService } from 'src/app/services/todo-service.service';
 import { FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-todo',
@@ -15,36 +15,38 @@ export class TodoComponent implements OnInit {
   public todoForm!: FormGroup;
   public todos: Todo[] = [];
   public todo!: Todo;
-  public inputName: string = "";
   public isSave: boolean = true;
-  public count: number = 0;
-  public amount: number = 0;
   public href : string = '';
   public subscription!: Subscription;
 
+
   constructor(private fb: FormBuilder, 
               private todoService: TodoServiceService,
-              private router : Router,
-              private activatedRouter: ActivatedRoute) { }
+              private router : Router) { }
 
   ngOnInit(): void {
+    //set Form 
+     this.setForm();
+      // get elements in form 
+      this.loadData();
+      // get href
+      this.todoService.href = this.router.url;
+       // search By Name
     this.todoService.search.subscribe(()=>
     {
       this.todos=this.todoService.todoSearch;
-    }),
-   
-    // define form 
+    })
+  }
+
+  // set Form 
+  setForm(){
     this.todoForm = this.fb.group({
       id: '',
       taskName: '',
       description: '',
       deleteFlag: ''
-    }),
-      // get elements in form 
-      this.loadData();
-      this.todoService.hef = this.router.url;
+    })
   }
-
   // Load data
   loadData() {
     this.subscription = this.todoService.getTodoList().subscribe(data => {
@@ -56,6 +58,7 @@ export class TodoComponent implements OnInit {
 
   // Add and Update Todo 
   submitForm() {
+    // add Todo
     if (this.isSave) {
       this.todo = this.todoForm.value;
       this.todo.deleteFlag=false;
@@ -63,6 +66,7 @@ export class TodoComponent implements OnInit {
       this.subscription = this.todoService.UpsertTodo(this.todo).subscribe(data => {
         this.loadData();
       });
+      // Update Todo
     } else {
       this.todo = this.todoForm.value;
       this.subscription = this.todoService.UpsertTodo(this.todo).subscribe(data => {
@@ -80,7 +84,7 @@ export class TodoComponent implements OnInit {
       this.todoForm.controls['taskName'].setValue(data.item.taskName);
       this.todoForm.controls['description'].setValue(data.item.description);
       this.todoForm.controls['id'].setValue(data.item.id);
-      this.todoForm.controls['deleteFlag'].setValue(data.item.deleteFlag);
+      this.todoForm.controls['deleteFlag'].setValue(data.item.deleteFlag) ;
     })
 
   }
@@ -94,15 +98,6 @@ export class TodoComponent implements OnInit {
     } 
   }
 
-  // // get Deleted TodoList
-  // getDeletedTodoList() {
-  //   this.subscription = this.todoService.getDeletedTodoList().subscribe(data => {
-  //     this.todos = data.item;
-  //     this.amount = this.todos.length;
-  //   });
-  // }
- 
-
   // get Last ID
   getLastId(todos: any) {
     let lastID = todos.length > 0 ? todos.sort((a: any, b: any) => {
@@ -112,10 +107,5 @@ export class TodoComponent implements OnInit {
     })[0].id + 1 : 1;
     return lastID;
   }
-  // handleParams(){
-  //   let name = this.activatedRouter.snapshot.params[''];
-  //     console.log(name);
-
-  // }
 }
 
