@@ -1,0 +1,35 @@
+/* menu */
+ 
+.menu{
+    height: 44px;
+    background-color: #db4c3f;
+    line-height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text {
+  
+    height: 30px;
+    width: 200px;
+    background: #FFFFFFFF;
+    border: 1px solid;
+    padding-left: 5px;
+
+    
+}
+.text:hover{
+    background-color: antiquewhite;
+}
+.timkiem {
+  
+    height: 34px;
+    width: 80px;
+    background: orange;
+    border: 1px solid;
+    color:red;
+}
+.timkiem:hover{
+    background-color: #FAFAFA;
+}

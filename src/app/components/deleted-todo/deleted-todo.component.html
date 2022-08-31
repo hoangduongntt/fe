@@ -1,0 +1,22 @@
+<div class="right" *ngIf="todos">
+  <div class="top" >
+    <div class="inbox">Deleted Todo List</div>
+    <div class="ti-comment"> Comment</div>
+    <div class="ti-view-list-alt"> View</div>
+    <div class="ti-more"></div>
+  </div>
+  <div class="content">
+    <ul *ngFor="let todo of todos">
+      <li>
+        <div class="check">
+          <div class="radio">
+            <input type="radio" name="radio" class="radio1" /> 
+            <h3 class="nameRadio">{{ todo.taskName }}</h3>
+            <br />
+          </div>
+          <div class="ti-slice"></div>
+        </div>
+        <label class="comment">{{ todo.description}}</label>
+        <hr />
+      </li>
+    </ul>

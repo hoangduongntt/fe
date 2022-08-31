@@ -1,0 +1,62 @@
+.left{
+    padding-top: 60px;
+    width: 400px;
+    height: 1200px;
+    background-color: #FAFAFA;
+
+}
+.left ul li{
+    color: black;
+    font-size: 16px;
+    margin: 0px 30px 0px 0px;
+    height: 70px;
+    padding-left: 10px;
+    line-height: 70px;
+    border-radius: 3px; 
+    border: hidden;
+    background-color:#EEEEEE ;
+    list-style: none;
+
+}
+.left ul li .parameter {
+    display: flex;
+}
+.parameter-icon{
+    margin-left: 10px;
+}
+.parameter-text{
+    margin-left: 40px;
+}
+.parameter-number{
+    margin-left: 190px;
+}
+.left ul li:hover{
+    background-color: coral;
+}
+.project{
+    display: flex;
+    margin-left: 55px;
+    margin-top: 10px;
+    height: 40px;
+    align-items: center;
+    
+}
+.ti-angle-down{
+   width: 20px;
+}
+
+.name{
+    height: 20px;       
+    width: 20px;
+    margin-left: 40px;
+    font-size: 18px;
+    font-weight: bold ;
+ }
+  .ti-plus {
+    display: none;
+  }
+ .project:hover >.ti-plus{
+    width: 30px;
+    margin-left: 200px;
+    display: inline;
+ }  

@@ -1,0 +1,39 @@
+<div class="right">
+  <div class="top">
+    <div class="inbox"> Inbox</div>
+    <div class="ti-comment"> Comment</div>
+    <div class="ti-view-list-alt"> View</div>
+    <div class="ti-more"></div>
+  </div>
+  <div class="content">
+    <ul *ngFor="let todo of todos">
+      <li>
+        <div class="check">
+          <div class="radio">
+            <input type="radio" name="radio" class="radio1" (click)="deleteTodo(todo.id)" />
+            <h3 class="nameRadio">{{ todo.taskName }}</h3>
+            <br />
+          </div>
+          <div class="ti-slice" (click)="editTodo(todo.id)"></div>
+        </div>
+        <label class="comment">{{ todo.description }}</label>
+        <hr />
+      </li>
+    </ul>
+    <div class="input">
+      <form [formGroup]="todoForm">
+        <label for=""></label>
+        <input name="taskName" type="text" class="form-control" required="required" placeholder="Task name "
+          formControlName="taskName" />
+
+        <label for=""></label>
+        <input name="description" type="text" class="form-control" placeholder="Description "
+          formControlName="description" />
+
+        <button class="submit" type="button" [disabled]="todoForm.invalid" (click)="submitForm()">
+          Add task
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
