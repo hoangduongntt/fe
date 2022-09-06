@@ -12,6 +12,7 @@ export class SidebarComponent implements OnInit {
   constructor(private todoService: TodoServiceService) { }
 
   ngOnInit(): void {
+    
     // get count Todo 
     this.todoService.todoCount$.subscribe(res=>{
       this.todoCount = res})

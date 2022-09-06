@@ -11,6 +11,7 @@ import { Todo } from 'src/models/Todo.class';
 })
 export class DeletedTodoComponent implements OnInit {
   public todos: Todo[] = [];
+  public count : number = 0;
   public subscription!: Subscription;
   public deletedCount: number = 0;
   public href : string = '';
@@ -18,7 +19,7 @@ export class DeletedTodoComponent implements OnInit {
   constructor(private todoService: TodoServiceService, private router : Router) { }
 
   ngOnInit(): void {
-    
+
     // load Data
     this.getDeletedTodoList(); 
     // search By Name
@@ -35,6 +36,7 @@ export class DeletedTodoComponent implements OnInit {
   this.subscription = this.todoService.getDeletedTodoList().subscribe(data => {
     this.todos = data.item;
     this.todoService.deletedCount$.next(this.todos.length);
+    this.count = this.todos.length;
   });
 }
 }

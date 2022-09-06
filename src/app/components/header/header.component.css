@@ -16,7 +16,7 @@
     background: #FFFFFFFF;
     border: 1px solid;
     padding-left: 5px;
-
+    box-sizing:content-box;
     
 }
 .text:hover{
@@ -24,12 +24,13 @@
 }
 .timkiem {
   
-    height: 34px;
+    height: 30px;
     width: 80px;
     background: orange;
-    border: 1px solid;
-    color:red;
+    border: 1px solid orange;
+    box-sizing:content-box;
 }
 .timkiem:hover{
     background-color: #FAFAFA;
 }
+

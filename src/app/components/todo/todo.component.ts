@@ -16,30 +16,29 @@ export class TodoComponent implements OnInit {
   public todos: Todo[] = [];
   public todo!: Todo;
   public isSave: boolean = true;
-  public href : string = '';
+  public href: string = '';
   public subscription!: Subscription;
 
 
-  constructor(private fb: FormBuilder, 
-              private todoService: TodoServiceService,
-              private router : Router) { }
+  constructor(private fb: FormBuilder,
+    private todoService: TodoServiceService,
+    private router: Router) { }
 
   ngOnInit(): void {
     //set Form 
-     this.setForm();
-      // get elements in form 
-      this.loadData();
-      // get href
-      this.todoService.href = this.router.url;
-       // search By Name
-    this.todoService.search.subscribe(()=>
-    {
-      this.todos=this.todoService.todoSearch;
+    this.setForm();
+    // get elements in form 
+    this.loadData();
+    // get href
+    this.todoService.href = this.router.url;
+    // search By Name
+    this.todoService.search.subscribe(() => {
+      this.todos = this.todoService.todoSearch;
     })
   }
 
   // set Form 
-  setForm(){
+  setForm() {
     this.todoForm = this.fb.group({
       id: '',
       taskName: '',
@@ -52,7 +51,7 @@ export class TodoComponent implements OnInit {
     this.subscription = this.todoService.getTodoList().subscribe(data => {
       this.todos = data.item;
       this.todoService.todoCount$.next(this.todos.length);
-      
+
     });
   }
 
@@ -61,7 +60,7 @@ export class TodoComponent implements OnInit {
     // add Todo
     if (this.isSave) {
       this.todo = this.todoForm.value;
-      this.todo.deleteFlag=false;
+      this.todo.deleteFlag = false;
       this.todo.id = this.getLastId(this.todos);
       this.subscription = this.todoService.UpsertTodo(this.todo).subscribe(data => {
         this.loadData();
@@ -84,7 +83,7 @@ export class TodoComponent implements OnInit {
       this.todoForm.controls['taskName'].setValue(data.item.taskName);
       this.todoForm.controls['description'].setValue(data.item.description);
       this.todoForm.controls['id'].setValue(data.item.id);
-      this.todoForm.controls['deleteFlag'].setValue(data.item.deleteFlag) ;
+      this.todoForm.controls['deleteFlag'].setValue(data.item.deleteFlag);
     })
 
   }
@@ -95,7 +94,7 @@ export class TodoComponent implements OnInit {
       this.subscription = this.todoService.deleteTodo(id).subscribe(data => {
         this.loadData();
       })
-    } 
+    }
   }
 
   // get Last ID
