@@ -19,6 +19,8 @@ export class TodoServiceService {
   public href : any;
   public todoCount$ = new BehaviorSubject<number> (0);
   public deletedCount$ = new BehaviorSubject<number> (0);
+  public checkLogin$ = new BehaviorSubject<number> (0);
+  public checkLogout$ = new BehaviorSubject<number> (0);
   constructor(private http : HttpClient) { }
   
   // Get Todo List
@@ -28,7 +30,7 @@ export class TodoServiceService {
 
   // Upsert Todo
   UpsertTodo(todo : Todo){
-    return this.http.post(this.API + 'insert', todo) as Observable<any>;
+    return this.http.post(this.API + 'upsert', todo) as Observable<any>;
    
   }
 
@@ -50,7 +52,7 @@ export class TodoServiceService {
    // Search By Name
   searchByName(name : string){
     const params = new HttpParams().set('name', name.trim());
-    if(this.href == '/home') {
+    if(this.href == '/todo') {
       (this.http.get(this.API + 'search', {params}) as Observable<any>).subscribe((res)=>{
         this.todoSearch = res.item as Observable<any>;
         this.search.emit();

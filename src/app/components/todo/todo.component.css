@@ -12,7 +12,7 @@
 
 }
 .inbox{ 
-   font-size: 20px;
+   font-size: 25px;
    font-weight: bold;
    margin-left: 55px;
 }
@@ -97,3 +97,7 @@ h3 {
  .nameRadio{
    font-weight: bold;
  }
+ .result{
+   margin-top: 100px;
+   margin-left: 540px;
+}

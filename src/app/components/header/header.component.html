@@ -1,6 +1,12 @@
 <div class="menu">
   <div class="search">
-      <input type="text" class="text" id="text" #search placeholder="Search" >
-      <button class="timkiem" (click)="searchByName(search.value)"  type="button">Submit</button>
+    <input type="text" class="text" id="text" #search placeholder="Search" />
+    <button class="timkiem" (click)="searchByName(search.value)" type="button">
+      Submit
+    </button>
+  </div>
+  <div class="log">
+    <button class="login" type="button" routerLink="/login" *ngIf="isLogin==0">Login</button>
+    <button  class="logout" type="button" (click)="logout()"  *ngIf="isLogin==1">Logout</button>
   </div>
 </div>

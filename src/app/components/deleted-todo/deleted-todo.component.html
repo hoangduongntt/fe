@@ -1,4 +1,4 @@
-<div class="right" *ngIf="count" >
+<div class="right" *ngIf="todos.length > 0" >
   <div class="top" >
     <div class="inbox">Deleted</div>
     <div class="ti-comment"> Comment</div>
@@ -6,8 +6,8 @@
     <div class="ti-more"></div>
   </div>
   <div class="content">
-    <ul *ngFor="let todo of todos">
-      <li>
+    <ul>
+      <li *ngFor="let todo of todos">
         <div class="check">
           <div class="radio">
             <input type="radio" name="radio" class="radio1" /> 
@@ -20,3 +20,8 @@
         <hr />
       </li>
     </ul>
+  </div>
+</div>
+  <div class="result" *ngIf="todos.length < 1">
+         <h1>Found not record !</h1> 
+  </div>

@@ -1,13 +1,13 @@
-<div class="right">
+<div class="right" *ngIf="todos.length > 0" >
   <div class="top">
-    <div class="inbox"> Inbox</div>
+    <div class="inbox"> Todo </div>
     <div class="ti-comment"> Comment</div>
     <div class="ti-view-list-alt"> View</div>
     <div class="ti-more"></div>
   </div>
   <div class="content">
-    <ul *ngFor="let todo of todos">
-      <li>
+    <ul >
+      <li *ngFor="let todo of todos">
         <div class="check">
           <div class="radio">
             <input type="radio" name="radio" class="radio1" (click)="deleteTodo(todo.id)" />
@@ -36,4 +36,7 @@
       </form>
     </div>
   </div>
+</div>
+<div class="result" *ngIf="todos.length < 1">
+  <h1>Found not record !</h1> 
 </div>

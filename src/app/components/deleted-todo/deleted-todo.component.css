@@ -12,15 +12,15 @@
 
 }
 .inbox{ 
-   font-size: 20px;
+   font-size: 25px;
    font-weight: bold;
    margin-left: 55px;
 }
 .ti-comment{ 
-   margin-left: 750px;
+   margin-left: 720px;
 }
 .ti-view-list-alt,.ti-more{ 
-   margin-left: 50px;
+   margin-left: 40px;
 }
 .ti-comment:hover,.ti-view-list-alt:hover,.ti-more:hover{ 
    background-color:  #EEEEEE;
@@ -61,4 +61,8 @@ h3 {
    float: right;
    margin-left: 240px;
    display: inline;
+}
+.result{
+   margin-top: 100px;
+   margin-left: 540px;
 }

@@ -1,24 +1,32 @@
 <div class="left">
   <ul>
-      <li routerLink="/home">
-          <div class="parameter">
-              <div class="parameter-icon">1</div>
-              <div class="parameter-text">Inbox</div>
-              <div class="parameter-number" *ngIf="todoCount">{{todoCount}}</div>
-          </div>
-      </li>
-      <li routerLink="/deletedTodo">
-          <div class="parameter">
-              <div class="parameter-icon">2</div>
-              <div class="parameter-text">Delete</div>
-              <div class="parameter-number" *ngIf="deleteCount">{{deleteCount}}</div>
-          </div>
-      </li>
-     
+    <li routerLink="/home" *ngIf="checkLogin==0 && checkLogout==0 || checkLogin==0 && checkLogout==1 ">
+      <div class="parameter">
+        <div class="parameter-icon" ></div>
+        <div class="parameter-text">Home</div>
+        <div class="parameter-number"></div>
+      </div>
+    </li>
+    <li routerLink="/todo" *ngIf="checkLogin==1 ">
+      <div class="parameter">
+        <div class="parameter-icon">1</div>
+        <div class="parameter-text">Todos</div>
+        <div class="parameter-number" *ngIf="todoCount">{{ todoCount }}</div>
+      </div>
+    </li>
+    <li routerLink="/deletedTodo" *ngIf="checkLogin==1">
+      <div class="parameter">
+        <div class="parameter-icon">2</div>
+        <div class="parameter-text">Delete</div>
+        <div class="parameter-number" *ngIf="deleteCount">
+          {{ deleteCount }}
+        </div>
+      </div>
+    </li>
   </ul>
   <div class="project">
-      <div class="ti-angle-down"></div>
-      <div class="name">Project</div>
-      <div class="ti-plus"></div>
+    <div class="ti-angle-down"></div>
+    <div class="name">Project</div>
+    <div class="ti-plus"></div>
   </div>
 </div>

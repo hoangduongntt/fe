@@ -1,0 +1,29 @@
+.login{
+    width: 800px;
+    margin-top: 100px;
+    margin-left: 300px;
+}
+.form-group {
+    width: 400px;
+}
+label{
+    font-size: 20px ;
+    font-weight: bold;
+}
+input{
+    width: 600px;
+    height: 40px;
+    font-size: 18px;
+}
+.btn{
+    width: 80px;
+    height: 40px;
+    background-color: coral;
+}
+h3{
+    color: red;
+    font-size: 30px ;
+}
+h1 {
+    font-size: 50px;
+}

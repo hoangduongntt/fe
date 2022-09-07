@@ -1,17 +1,16 @@
 /* menu */
  
 .menu{
-    height: 44px;
+    height: 60px;
     background-color: #db4c3f;
-    line-height: 44px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
 .text {
   
-    height: 30px;
+    height: 35px;
     width: 200px;
     background: #FFFFFFFF;
     border: 1px solid;
@@ -19,13 +18,16 @@
     box-sizing:content-box;
     
 }
+.search {
+    margin-left: 800px;
+}
 .text:hover{
     background-color: antiquewhite;
 }
 .timkiem {
   
-    height: 30px;
-    width: 80px;
+    height: 35px;
+    width: 70px;
     background: orange;
     border: 1px solid orange;
     box-sizing:content-box;
@@ -33,4 +35,17 @@
 .timkiem:hover{
     background-color: #FAFAFA;
 }
-
+.log {
+    margin-left: 650px;
+   line-height: 40px;
+}
+.login {
+    height: 38px;
+    width: 100px;
+    background-color: aquamarine;
+}
+.logout {
+    height: 38px;
+    width: 100px;
+    background-color: bisque;
+}

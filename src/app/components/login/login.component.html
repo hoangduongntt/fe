@@ -1,0 +1,22 @@
+<div class="login">
+    <h1>Login</h1>
+    <div class="error" *ngIf="error == -1">
+        <h3>User Or Password is Wrong !</h3>
+    </div>
+    <form>
+        
+        <div class="form-group">
+            <label for="">Username : </label> <br /><br />
+            <input type="text" class="form-control" id="" #userName />
+        </div>
+        <br />
+        <div class="form-group">
+            <label for="">Password : </label> <br /><br />
+            <input type="password" class="form-control" id="" #passWord />
+        </div>
+        <br />
+        <button type="button" class="btn" (click)="onLogin(userName.value, passWord.value)">
+            Login
+        </button>
+    </form>
+</div>

@@ -9,6 +9,13 @@ import { TodoComponent } from './components/todo/todo.component';
 import { DeletedTodoComponent } from './components/deleted-todo/deleted-todo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { LoginComponent } from './components/login/login.component';
+
+// service
+import { TodoServiceService } from './services/todo-service.service';
+import { AuthGuard } from './services/guards/auth.guard';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,16 +23,19 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     SidebarComponent,
     TodoComponent,
-    DeletedTodoComponent
+    DeletedTodoComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule,
+    CommonModule
   ],
-  providers: [],
+  providers: [TodoServiceService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
